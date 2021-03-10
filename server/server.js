@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const cors = require('cors');
+const {readImages, tagImage} = require('./queries')
 
 app.use(express.static('../client/dist')); // Host your dist folder up to the server
 app.use(express.json()); // Alternative to BodyParser
