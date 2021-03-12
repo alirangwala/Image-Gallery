@@ -12,9 +12,7 @@ margin: 0;
 list-style: none;
 `;
 
-const Images = ({ images, tagImage }) => {
-	// const [tag, setTag] = useState(image.tagged);
-
+const Images = ({ images, tagImage, condition }) => {
 	return (
 		<StyledCarousel
 			center
@@ -23,7 +21,7 @@ const Images = ({ images, tagImage }) => {
 			slidesToShow={3}
 			breakpoints={[
 				{
-					size: 300,
+					size: 400,
 					settings: {
 						slidesToShow: 1,
 						showArrows: true,
@@ -31,7 +29,7 @@ const Images = ({ images, tagImage }) => {
 					},
 				},
 				{
-					size: 600,
+					size: 800,
 					settings: {
 						slidesToShow: 2,
 						showArrows: true,
@@ -39,7 +37,7 @@ const Images = ({ images, tagImage }) => {
 					},
 				},
 				{
-					size: 900,
+					size: 1200,
 					settings: {
 						slidesToShow: 3,
 						showArrows: true,
@@ -47,7 +45,7 @@ const Images = ({ images, tagImage }) => {
 					},
 				},
 				{
-					size: 1200,
+					size: 1600,
 					settings: {
 						slidesToShow: 4,
 						showArrows: true,
@@ -57,7 +55,7 @@ const Images = ({ images, tagImage }) => {
 			]}
 		>
 			{images
-				.filter((image) => image.tagged === false)
+				.filter((image) => image.tagged === condition)
 				.map((image, i) => (
 					<ImageCard image={image} tagImage={tagImage} key={i} />
 				))}

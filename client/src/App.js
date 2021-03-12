@@ -1,10 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FavoriteImages from "./FavoriteImages.js";
 import Images from "./Images.js";
-import Carousel from "styled-components-carousel";
-import styled from "styled-components";
 
 const App = () => {
 	const [images, setImages] = useState([]);
@@ -16,22 +13,29 @@ const App = () => {
 			.then(setImages);
 	}, [images]);
 
-	const tagImage = (imageId) => {
+	const tagImageTrue = (imageId) => {
 		axios
-			.put(`http://localhost:3001/images/${imageId}/tag`, imageId)
+			.put(`http://localhost:3001/images/${imageId}/tag/true`, imageId)
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
 			});
 	};
 
+	const tagImageFalse = (imageId) => {
+		axios
+			.put(`http://localhost:3001/images/${imageId}/tag/false`, imageId)
+			.then((res) => {
+				console.log(res);
+				console.log(res.data);
+			});
+	};
 	return (
 		<div>
-			<h1>IMAGE GALLERY</h1>
-			<h2>Favorite Images</h2>
-			<FavoriteImages images={images} tagImage={tagImage} />
-			<h2>Images</h2>
-			<Images images={images} tagImage={tagImage} />
+			<h2>FAVORITE IMAGES</h2>
+			<Images images={images} tagImage={tagImageFalse} condition={true} />
+			<h2>IMAGE GALLERY</h2>
+			<Images images={images} tagImage={tagImageTrue} condition={false} />
 		</div>
 	);
 };
