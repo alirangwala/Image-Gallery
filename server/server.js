@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 3001;
 const cors = require("cors");
+const path = require("path");
+
 const { readImages, tagImageTrue, tagImageFalse } = require("./queries");
 
 app.use(express.static("../client/dist")); // Host your dist folder up to the server
