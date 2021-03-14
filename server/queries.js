@@ -1,8 +1,7 @@
-const Pool = require("pg").Pool;
+const { Pool, Client } = require("pg");
 
 const pool = new Pool({
 	database: "imagelib",
-	user: "alirangwala",
 });
 
 // GET images
@@ -12,8 +11,9 @@ readImages = (callback) => {
 	pool.query(sqlQuery, (err, res) => {
 		if (err) {
 			throw err;
+		} else {
+			callback(null, res);
 		}
-		callback(null, res);
 	});
 };
 

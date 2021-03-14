@@ -6,8 +6,8 @@ const path = require("path");
 
 const { readImages, tagImageTrue, tagImageFalse } = require("./queries");
 
-app.use(express.static("../client/dist")); // Host your dist folder up to the server
-app.use(express.json()); // Alternative to BodyParser
+app.use(express.static("../client/src")); // Host your dist folder up to the server
+app.use(express.json());
 app.use(cors());
 
 app.get("/images/", (req, res) => {
